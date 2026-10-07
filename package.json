@@ -1,0 +1,16 @@
+{
+  "name": "kgmcloud-api",
+  "private": true,
+  "version": "1.0.0",
+  "description": "KGM Cloud backend (Express + MySQL)",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.0",
+    "nodemailer": "^6.9.16"
+  }
+}

@@ -1,0 +1,136 @@
+<!doctype html>
+<!--
+  ============================================================================
+  KGM CLOUD — BIRTHDAY EMAIL (variant of MasterTemplate.html)
+  ============================================================================
+  Full-width banner image near the top (SkodaBirthday.png — alpha PNG, 2400x1200,
+  hosted at https://kgmcloud.co.uk/SkodaBirthday.png). The card's glow/grid shows
+  through the transparent parts. No heading — the banner carries the message.
+
+  Dynamically injected values:
+    {FIRSTNAME}   -> "Hi {FIRSTNAME},"
+    {VALUE_LABEL} -> "10% off" | "£10 off"
+    {CODE}        -> the discount code, e.g. KGM-BDAY24
+    {VALID_TO}    -> "Use it before 21 October 2026."
+  Marketing email -> footer Line 1 (manage preferences) is included.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="x-apple-disable-message-reformatting" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>KGM Cloud — Birthday Template</title>
+  <style>
+    body { margin: 0; padding: 0; background: #ffffff; color: #e2e8f0; font-family: Arial, Helvetica, sans-serif; }
+    .page-wrap { background: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <!-- ===================== THE EMAIL ===================== -->
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#03060c;">
+      <tr>
+        <td align="center" style="padding:24px 12px 48px;">
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0a1a3d" style="max-width:600px;width:100%;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);
+                 background-color:#0a1a3d;
+                 background-image:
+                   linear-gradient(to bottom, rgba(3,6,12,0) 60px, rgba(6,10,20,0.55) 180px, #060a14 320px),
+                   radial-gradient(ellipse 500px 240px at 50% 12px, rgba(26,92,204,0.24) 0%, rgba(17,58,132,0.14) 35%, rgba(6,20,48,0.06) 65%, transparent 100%),
+                   linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+                 background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;">
+
+            <!-- LOGO ROW : the pattern is one continuous card background behind everything -->
+            <tr>
+              <td style="padding:30px 36px 18px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td align="left" valign="top">
+                      <img src="https://kgmcloud.co.uk/logo.png" alt="KGM Cloud" width="140" style="display:block;width:140px;max-width:100%;height:auto;border:0;outline:none;text-decoration:none;" />
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- BANNER ROW : sits on the same continuous pattern -->
+            <tr>
+              <td align="center" style="padding:0 12px 22px;">
+                <img src="https://kgmcloud.co.uk/SkodaBirthday.png" alt="Happy birthday from KGM Cloud" width="576" style="display:block;width:100%;max-width:100%;height:auto;border:0;border-radius:10px;outline:none;text-decoration:none;" />
+              </td>
+            </tr>
+
+            <!-- BODY ON THE PATTERN BACKGROUND -->
+            <tr>
+              <td style="padding:24px 36px 12px;">
+                <p style="margin:0 0 14px;font-size:15px;line-height:1.7;color:#c7d3ea;">Hi {FIRSTNAME},</p>
+                <p style="margin:0 0 20px;font-size:15px;line-height:1.7;color:#c7d3ea;">Happy birthday! As a thank you, here's <strong style="color:#4ade80;">{VALUE_LABEL}</strong> on your next order at KGM Cloud. Just use the code below at checkout.</p>
+
+                <!-- ICT_AREA: the discount code -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:26px 0 30px;">
+                  <tr>
+                    <td style="background:#0d1b33;border:1px solid rgba(59,130,246,0.3);border-radius:10px;padding:20px 22px;">
+                      <p style="margin:0 0 8px;text-align:center;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#7f8ea8;">Your birthday code</p>
+                      <span style="display:block;text-align:center;background:#0d2a1a;border:1px dashed #4ade80;color:#4ade80;font-weight:800;font-size:20px;letter-spacing:0.12em;padding:14px 24px;border-radius:8px;">{CODE}</span>
+                      <p style="margin:10px 0 0;text-align:center;font-size:12px;color:#5b6a82;">{VALID_TO}. Just enter it at checkout.</p>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- CTA -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td align="center" style="padding:6px 0 14px;">
+                      <a href="{CTA_URL}" target="_blank"
+                         style="display:inline-block;background:#3b82f6;color:#ffffff;text-decoration:none;font-weight:700;font-size:15px;padding:14px 34px;border-radius:10px;letter-spacing:0.02em;">
+                        {CTA_LABEL}
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+                <p style="margin:0 0 26px;text-align:center;font-size:12px;color:#5b6a82;">
+                  <a href="{CTA_URL}" style="color:#5b6a82;text-decoration:underline;word-break:break-all;">{CTA_FALLBACK}</a>
+                </p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid rgba(148,163,184,0.15);">&nbsp;</td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- FOOTER (fixed for every email) -->
+            <tr>
+              <td style="background:#060a14;padding:18px 36px 34px;">
+                <!-- LINE 1 — marketing emails ONLY; omit for transactional emails -->
+                <p style="margin:0 0 10px;font-size:12px;line-height:1.7;color:#5b6a82;">
+                  You're receiving this email from KGM Cloud. Want to change what we send you?
+                  <a href="https://kgmcloud.co.uk/account?tab=settings" style="color:#3b82f6;text-decoration:none;">Manage your preferences in your account.</a>
+                </p>
+                <!-- LINE 2 — copyright (all emails) -->
+                <p style="margin:0 0 8px;font-size:12px;color:#475569;">
+                  &copy;2026 KGM Cloud
+                </p>
+                <!-- LINE 3 — legal links (all emails) -->
+                <p style="margin:0;font-size:12px;color:#475569;">
+                  <a href="https://kgmcloud.co.uk/terms" style="color:#5b6a82;text-decoration:none;">Terms of Service</a>
+                  &middot; <a href="https://kgmcloud.co.uk/privacy" style="color:#5b6a82;text-decoration:none;">Privacy Policy</a>
+                  &middot; <a href="https://kgmcloud.co.uk/cookies" style="color:#5b6a82;text-decoration:none;">Cookie Policy</a>
+                  &middot; <a href="https://kgmcloud.co.uk/digital-products" style="color:#5b6a82;text-decoration:none;">Digital Products &amp; Refunds</a>
+                </p>
+              </td>
+            </tr>
+
+          </table>
+
+        </td>
+      </tr>
+    </table>
+    <!-- =================== END THE EMAIL =================== -->
+
+  </div>
+</body>
+</html>

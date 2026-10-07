@@ -1,0 +1,147 @@
+<!doctype html>
+<!--
+  ============================================================================
+  KGM CLOUD — ORDER CONFIRMED / RECEIPT EMAIL (variant of MasterTemplate.html)
+  ============================================================================
+
+  Dynamically injected values:
+    {FIRSTNAME}       -> "Hi {FIRSTNAME},"
+    {ORDER_KEY}       -> checkout reference shown top-right and in the footnote
+    {ITEMS_ROWS}      -> one <tr> per bought item, e.g.
+                            <tr><td style="padding:10px 12px;border-bottom:1px solid #26304a;color:#e2e8f0">Product name</td><td style="padding:10px 12px;border-bottom:1px solid #26304a;color:#e2e8f0;text-align:right">£9.99</td></tr>
+    {DISCOUNT_ROWS}   -> empty string when no discount, otherwise a Subtotal row
+                          plus a Discount row:
+                            <tr><td style="padding:10px 12px;color:#94a3b8">Subtotal</td><td style="padding:10px 12px;color:#e2e8f0;text-align:right">£19.98</td></tr>
+                            <tr><td style="padding:10px 12px;color:#4ade80">Discount</td><td style="padding:10px 12px;color:#4ade80;text-align:right">-£2.00</td></tr>
+    {SYMBOL}          -> currency symbol (£ $ €)
+    {TOTAL}           -> final amount paid
+  CTA prefilled: "Download your products" -> https://kgmcloud.co.uk/account?tab=downloads
+  Transactional email -> footer Line 1 (manage preferences) is OMITTED.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="x-apple-disable-message-reformatting" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>KGM Cloud — Order Confirmed Template</title>
+  <style>
+    body { margin: 0; padding: 0; background: #ffffff; color: #e2e8f0; font-family: Arial, Helvetica, sans-serif; }
+    .page-wrap { background: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <!-- ===================== THE EMAIL ===================== -->
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#03060c;">
+      <tr>
+        <td align="center" style="padding:24px 12px 48px;">
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0a1a3d" style="max-width:600px;width:100%;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);
+                 background-color:#0a1a3d;
+                 background-image:
+                   linear-gradient(to bottom, rgba(3,6,12,0) 60px, rgba(6,10,20,0.55) 180px, #060a14 320px),
+                   radial-gradient(ellipse 500px 240px at 50% 12px, rgba(26,92,204,0.24) 0%, rgba(17,58,132,0.14) 35%, rgba(6,20,48,0.06) 65%, transparent 100%),
+                   linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+                 background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;">
+
+            <!-- LOGO ROW : the pattern is one continuous card background behind everything -->
+            <tr>
+              <td style="padding:30px 36px 18px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td align="left" valign="top">
+                      <img src="https://kgmcloud.co.uk/logo.png" alt="KGM Cloud" width="140" style="display:block;width:140px;max-width:100%;height:auto;border:0;outline:none;text-decoration:none;" />
+                    </td>
+                    <td align="right" valign="top" style="padding-top:10px;">
+                      <span style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#7f8ea8;">Receipt &middot; {ORDER_KEY}</span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- BODY ON THE PATTERN BACKGROUND -->
+            <tr>
+              <td style="padding:0 36px 12px;">
+                <h1 style="margin:0 0 18px;font-size:26px;line-height:1.25;font-weight:800;color:#ffffff;letter-spacing:0.01em;">Payment confirmed</h1>
+                <p style="margin:0 0 14px;font-size:15px;line-height:1.7;color:#c7d3ea;">Hi {FIRSTNAME},</p>
+                <p style="margin:0 0 20px;font-size:15px;line-height:1.7;color:#c7d3ea;">Thank you for your purchase. Your order is complete.</p>
+
+                <!-- ICT_AREA: the receipt line-item table -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:26px 0 24px;">
+                  <tr>
+                    <td style="background:#0d1b33;border:1px solid rgba(59,130,246,0.3);border-radius:10px;padding:8px 6px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                        <thead>
+                          <tr>
+                            <th style="text-align:left;padding:10px 12px;font-size:11px;text-transform:uppercase;color:#60a5fa;letter-spacing:0.05em;">Item</th>
+                            <th style="text-align:right;padding:10px 12px;font-size:11px;text-transform:uppercase;color:#60a5fa;letter-spacing:0.05em;">Amount</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {ITEMS_ROWS}
+                          {DISCOUNT_ROWS}
+                          <tr>
+                            <td style="padding:12px;color:#ffffff;font-weight:bold;border-top:1px solid #26304a;">Total</td>
+                            <td style="padding:12px;text-align:right;color:#ffffff;font-weight:bold;font-size:16px;border-top:1px solid #26304a;">{SYMBOL}{TOTAL}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+                <p style="margin:0 0 24px;font-size:13px;line-height:1.7;color:#5b6a82;">Order key {ORDER_KEY}; keep it handy when contacting support.</p>
+
+                <!-- CTA -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td align="center" style="padding:6px 0 14px;">
+                      <a href="https://kgmcloud.co.uk/account?tab=downloads" target="_blank"
+                         style="display:inline-block;background:#3b82f6;color:#ffffff;text-decoration:none;font-weight:700;font-size:15px;padding:14px 34px;border-radius:10px;letter-spacing:0.02em;">
+                        Download your products
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+                <p style="margin:0 0 26px;text-align:center;font-size:12px;color:#5b6a82;">
+                  Sign in to grab your files anytime:&nbsp;<a href="https://kgmcloud.co.uk/account?tab=downloads" style="color:#5b6a82;text-decoration:underline;word-break:break-all;">https://kgmcloud.co.uk/account?tab=downloads</a>
+                </p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid rgba(148,163,184,0.15);">&nbsp;</td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- FOOTER (fixed for every email) -->
+            <tr>
+              <td style="background:#060a14;padding:18px 36px 34px;">
+                <!-- LINE 1 — marketing emails ONLY; omit for transactional emails -->
+                <!-- LINE 2 — copyright (all emails) -->
+                <p style="margin:0 0 8px;font-size:12px;color:#475569;">
+                  &copy;2026 KGM Cloud
+                </p>
+                <!-- LINE 3 — legal links (all emails) -->
+                <p style="margin:0;font-size:12px;color:#475569;">
+                  <a href="https://kgmcloud.co.uk/terms" style="color:#5b6a82;text-decoration:none;">Terms of Service</a>
+                  &middot; <a href="https://kgmcloud.co.uk/privacy" style="color:#5b6a82;text-decoration:none;">Privacy Policy</a>
+                  &middot; <a href="https://kgmcloud.co.uk/cookies" style="color:#5b6a82;text-decoration:none;">Cookie Policy</a>
+                  &middot; <a href="https://kgmcloud.co.uk/digital-products" style="color:#5b6a82;text-decoration:none;">Digital Products &amp; Refunds</a>
+                </p>
+              </td>
+            </tr>
+
+          </table>
+
+        </td>
+      </tr>
+    </table>
+    <!-- =================== END THE EMAIL =================== -->
+
+  </div>
+</body>
+</html>

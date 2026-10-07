@@ -1,0 +1,5 @@
+node_modules
+*.msi
+.env
+*.log
+.DS_Store
