@@ -3924,6 +3924,27 @@ app.get('/api/health', async (_req, res) => {
 });
 
 
+/* ---- uploads seed: copy images baked into the Docker image onto the uploads
+       volume on first boot. Runs here (not just in docker-entrypoint.sh) so it
+       works regardless of any container command/entrypoint override. ---- */
+try {
+  const seedFs = require('fs');
+  const seedPath = require('path');
+  const seedSrc = '/seed/uploads';
+  const seedDst = seedPath.join(__dirname, 'uploads');
+  seedFs.mkdirSync(seedDst, { recursive: true });
+  if (seedFs.existsSync(seedSrc) && seedFs.readdirSync(seedDst).length === 0) {
+    for (const entry of seedFs.readdirSync(seedSrc)) {
+      seedFs.cpSync(seedPath.join(seedSrc, entry), seedPath.join(seedDst, entry), { recursive: true });
+    }
+    console.log('[uploads] seeded from image -> ' + seedDst);
+  }
+} catch (e) {
+  console.log('[uploads] seed skipped: ' + e.message);
+}
+console.log('[image-marker] kgmcloud-api seed patch active 2026-10-07');
+
+
 app.listen(3000, async () => {
   await init();
   seedBirthdaySettings().catch((e) => console.error('birthday settings seed failed:', e.message));
